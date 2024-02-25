@@ -58,7 +58,7 @@ class Reach extends IModule implements Listener {
 
         $distance = $player->getEyePos()->distance(new Vector3($damager->getEyePos()->getX(), $player->getEyePos()->getY(), $damager->getEyePos()->getZ()));
         $distance -= $damagerPing * 0.0043;
-        $distance -= $playerPing * 0.0053;
+        $distance -= $playerPing * 0.00532;
 
         if ($distance < 1) {
             return;
