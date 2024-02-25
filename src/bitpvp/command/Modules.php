@@ -41,6 +41,5 @@ class Modules extends Command {
         ];
 
         $sender->sendMessage(TextFormat::colorize(implode("\n", $message)));
-        Nebula::getInstance()->getServer()->getLogger()->debug(TextFormat::DARK_PURPLE . "\n" . "[Nebula] Executed command : " . TextFormat::colorize(implode("\n", $message)));
     }
 }
