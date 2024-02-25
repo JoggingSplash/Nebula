@@ -1,5 +1,6 @@
 ## Nebula
-Minecraft Bedrock anticheat for PocketMine-MP
+Minecraft Bedrock anticheat for PocketMine-MP 
+API 5.0.0
 
 ## Modules:
 
