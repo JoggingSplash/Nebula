@@ -19,7 +19,7 @@ class Registry
     /**
      * @return \SQLite3
      */
-    public function db(): \SQLite3  {
+    public function registry(): \SQLite3  {
         return $this->registry;
     }
 
