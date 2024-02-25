@@ -1,0 +1,12 @@
+---
+name: Nebula
+version: 1.0.0
+main: bitpvp\Nebula
+api: 5.0.0
+authors:
+  - JoggingSplash23
+  - Victualler
+permissions:
+  nebula.ac:
+    default: op
+...
