@@ -6,6 +6,10 @@
   <component name="ChangeListManager">
     <list default="true" id="46ceaca0-d054-4c7d-bd1a-151d63527e07" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/bitpvp/Nebula.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/bitpvp/Nebula.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/bitpvp/command/Info.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/bitpvp/command/Info.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/bitpvp/command/Modules.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/bitpvp/registry/Registry.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/bitpvp/registry/Registry.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -126,6 +130,9 @@
       <workItem from="1708994541963" duration="175000" />
       <workItem from="1708994949987" duration="40000" />
       <workItem from="1708995290794" duration="538000" />
+      <workItem from="1708996192497" duration="570000" />
+      <workItem from="1709005660412" duration="96000" />
+      <workItem from="1709006692066" duration="1015000" />
     </task>
     <servers />
   </component>

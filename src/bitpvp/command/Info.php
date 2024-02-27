@@ -24,7 +24,7 @@ class Info extends Command
         }
 
         if (count($args) < 1) {
-            $sender->sendMessage(TextFormat::DARK_PURPLE . '[ NEBULA ]' . "\n" . "/info (playerName)");
+            $sender->sendMessage(TextFormat::DARK_PURPLE . '[Nebula]' . "\n" . "/info (playerName)");
             return;
         }
 

@@ -32,6 +32,14 @@ class Registry
         $this->registry->exec("INSERT OR REPLACE INTO users(username, reason, expires) VALUES ('$username', '$reason', '$expire');");
     }
 
+    public function remove(string $username): void {
+        try {
+            $this->registry->exec("ALTER TABLE users DROP COLUMN $username");
+        } catch (\Exception $e) {
+            Nebula::getInstance()->getLogger()->debug("Error removing column: " . $e->getMessage());
+        }
+    }
+
     public function quit(): void {
         $this->registry->close();
     }

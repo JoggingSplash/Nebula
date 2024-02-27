@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace bitpvp;
 
 use bitpvp\command\Info;
-use bitpvp\command\Modules;
 use bitpvp\module\preset\Autoclick;
 use bitpvp\module\preset\Proxy;
 use bitpvp\module\preset\Packets;
@@ -32,7 +31,7 @@ class Nebula extends PluginBase {
 
         $this->getServer()->getCommandMap()->register("alerts", new Alerts());
         $this->getServer()->getCommandMap()->register("info", new Info());
-        $this->getServer()->getCommandMap()->register("modules", new Modules());
+        $this->getServer()->getCommandMap()->register("nebula", new \bitpvp\command\Nebula());
 
         $this->saveDefaultConfig();
 
