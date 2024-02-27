@@ -5,6 +5,7 @@ namespace bitpvp\module\preset;
 use bitpvp\module\IModule;
 use bitpvp\util\ModuleUtil;
 use bitpvp\util\types\Translator;
+use bitpvp\util\Util;
 use pocketmine\event\Listener;
 use pocketmine\event\player\PlayerJoinEvent;
 use pocketmine\player\Player;
@@ -45,6 +46,7 @@ class Proxy extends IModule implements Listener {
             $check = strtoupper($check);
             if ($check !== $name[0]) {
                 ModuleUtil::getInstance()->ban($player, Translator::translateModule($this->getFlagId())); //Win10 proxy
+                Util::getInstance()->log($this->getFlagId(), $player, 1 , 0);
             }
         }
     }
