@@ -67,15 +67,10 @@ class Timer extends IModule implements Listener {
             }
 
             $session->timerWait = time();
-            if($player->getPlayerInfo()->getExtraData()['DeviceOS'] === 1) {
-                ModuleUtil::getInstance()->ban($player, Translator::translateModule(self::PROXY)); //Android shitty check because i dont know when a android with lunar proxy join it flag timer violation with diff 0
-            }
-
             $session->addTimerViolation();
             Util::getInstance()->log($this->getFlagId(), $player, $session->getTimerViolations(), round($diff, 3));
 
-
-            if($session->getTimerViolations() > 8) {
+            if($session->getTimerViolations() > 14) {
                 ModuleUtil::getInstance()->ban($player, Translator::translateModule($this->getFlagId()));
             }
         }
