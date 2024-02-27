@@ -44,12 +44,24 @@ class Alerts extends Command
 		$session = SessionManager::getInstance()->getSession($sender);
 
 		if ($args[0] === 'on') {
+
+            if($session->enableAlerts) {
+                $sender->sendMessage(TextFormat::DARK_PURPLE . "You alredy have enabled alerts!");
+                return;
+            }
+
 			$session->setEnableAlerts();
 			$sender->sendMessage(TextFormat::DARK_PURPLE . ">> [ Nebula ] " . "\n" .'>> Enabled alerts' . "\n");
 			return;
 		}
 
         if ($args[0] === 'off') {
+
+            if(!$session->enableAlerts) {
+                $sender->sendMessage(TextFormat::DARK_PURPLE . "You alredy have diabled alerts!");
+                return;
+            }
+
 			$session->setEnableAlerts(false);
 			$sender->sendMessage(TextFormat::DARK_PURPLE . ">> [ Nebula ] " . "\n" .'>> Disabled alerts' . "\n");
 			return;
