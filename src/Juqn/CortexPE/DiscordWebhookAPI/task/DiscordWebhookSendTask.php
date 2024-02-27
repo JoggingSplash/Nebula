@@ -26,11 +26,11 @@
 
 declare(strict_types=1);
 
-namespace CortexPE\DiscordWebhookAPI\task;
+namespace Juqn\CortexPE\DiscordWebhookAPI\task;
 
 
-use CortexPE\DiscordWebhookAPI\Message;
-use CortexPE\DiscordWebhookAPI\Webhook;
+use Juqn\CortexPE\DiscordWebhookAPI\Message;
+use Juqn\CortexPE\DiscordWebhookAPI\Webhook;
 use pocketmine\scheduler\AsyncTask;
 use pocketmine\Server;
 

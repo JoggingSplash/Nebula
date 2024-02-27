@@ -26,9 +26,9 @@
 
 declare(strict_types = 1);
 
-namespace CortexPE\DiscordWebhookAPI;
+namespace Juqn\CortexPE\DiscordWebhookAPI;
 
-use CortexPE\DiscordWebhookAPI\task\DiscordWebhookSendTask;
+use Juqn\CortexPE\DiscordWebhookAPI\task\DiscordWebhookSendTask;
 use pocketmine\Server;
 
 final class Webhook {
