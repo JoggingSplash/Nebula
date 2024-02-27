@@ -46,7 +46,7 @@ class Alerts extends Command
 		if ($args[0] === 'on') {
 
             if($session->enableAlerts) {
-                $sender->sendMessage(TextFormat::DARK_PURPLE . "You alredy have enabled alerts!");
+                $sender->sendMessage(TextFormat::DARK_PURPLE . "You already have enabled alerts!");
                 return;
             }
 
@@ -58,7 +58,7 @@ class Alerts extends Command
         if ($args[0] === 'off') {
 
             if(!$session->enableAlerts) {
-                $sender->sendMessage(TextFormat::DARK_PURPLE . "You alredy have diabled alerts!");
+                $sender->sendMessage(TextFormat::DARK_PURPLE . "You already have diabled alerts!");
                 return;
             }
 

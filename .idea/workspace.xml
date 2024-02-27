@@ -6,12 +6,9 @@
   <component name="ChangeListManager">
     <list default="true" id="46ceaca0-d054-4c7d-bd1a-151d63527e07" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/bitpvp/Nebula.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/bitpvp/Nebula.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/bitpvp/command/Nebula.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/bitpvp/command/Alerts.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/bitpvp/command/Alerts.php" afterDir="false" />
     </list>
-    <list id="1998ab8b-8dc0-48b3-9e31-061a60ea4eba" name="Changes by victu" comment="">
-      <change beforePath="$PROJECT_DIR$/src/bitpvp/Nebula.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/bitpvp/Nebula.php" afterDir="false" />
-    </list>
+    <list id="1998ab8b-8dc0-48b3-9e31-061a60ea4eba" name="Changes by victu" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -22,14 +19,6 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
-  </component>
-  <component name="LineStatusTrackerManager">
-    <file path="$PROJECT_DIR$/src/bitpvp/Nebula.php">
-      <ranges>
-        <range start1="7" end1="7" start2="7" end2="8" changelist="46ceaca0-d054-4c7d-bd1a-151d63527e07" />
-        <range start1="31" end1="34" start2="32" end2="39" changelist="1998ab8b-8dc0-48b3-9e31-061a60ea4eba" />
-      </ranges>
-    </file>
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -141,7 +130,8 @@
       <workItem from="1708995290794" duration="538000" />
       <workItem from="1708996192497" duration="570000" />
       <workItem from="1709005660412" duration="96000" />
-      <workItem from="1709006692066" duration="1667000" />
+      <workItem from="1709006692066" duration="2103000" />
+      <workItem from="1709008977367" duration="20000" />
     </task>
     <servers />
   </component>
