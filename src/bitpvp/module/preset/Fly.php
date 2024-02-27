@@ -42,7 +42,7 @@ class Fly extends IModule implements Listener {
             return;
         }
 
-        if ($player->isCreative() or $player->isSpectator()) {
+        if ($player->isCreative() or $player->isSpectator() or !$player->getAllowFlight()) {
             return;
         }
 
