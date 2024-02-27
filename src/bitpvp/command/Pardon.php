@@ -7,10 +7,10 @@ use pocketmine\command\Command;
 use pocketmine\command\CommandSender;
 use pocketmine\player\Player;
 use pocketmine\utils\TextFormat;
-class Nebula extends Command {
+class Pardon extends Command {
 
     public function __construct() {
-        parent::__construct('nebula', "Remove a ban caused by Nebula", ">> /pardon (playerName)");
+        parent::__construct('pardon', "Remove a ban caused by Nebula", ">> /pardon (playerName)");
         $this->setPermission("nebula.ac");
     }
 
@@ -25,20 +25,13 @@ class Nebula extends Command {
             return;
         }
 
-        $target = $sender->getServer()->getPlayerByPrefix($args[0]);
-
-        if (!$target instanceof Player) {
-            $sender->sendMessage(TextFormat::DARK_PURPLE . 'Argument (playerName) missing.');
-            return;
-        }
-
-        if(!Registry::getInstance()->exists($target)) {
+        if(!Registry::getInstance()->exists($args[0])) {
             $sender->sendMessage(TextFormat::DARK_PURPLE . "Player is not banned.");
             return;
         }
 
-        Registry::getInstance()->remove($target);
+        Registry::getInstance()->remove($args[0]);
 
-        $sender->sendMessage(TextFormat::DARK_PURPLE . $target . " was successfully unbanned");
+        $sender->sendMessage(TextFormat::DARK_PURPLE . $args[0] . " was successfully unbanned");
     }
 }

@@ -34,7 +34,7 @@ class Registry
 
     public function remove(string $username): void {
         try {
-            $this->registry->exec("ALTER TABLE users DROP COLUMN $username");
+            $this->registry->exec("DELETE FROM users WHERE username = '$username'");
         } catch (\Exception $e) {
             Nebula::getInstance()->getLogger()->debug("Error removing column: " . $e->getMessage());
         }

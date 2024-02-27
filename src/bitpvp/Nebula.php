@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace bitpvp;
 
 use bitpvp\command\Info;
+use bitpvp\command\Pardon;
 use bitpvp\module\preset\Autoclick;
 use bitpvp\module\preset\Proxy;
 use bitpvp\module\preset\Packets;
@@ -29,9 +30,13 @@ class Nebula extends PluginBase {
 	protected function onEnable() : void {
         $this->getLogger()->info(TextFormat::DARK_PURPLE . "[+]");
 
-        $this->getServer()->getCommandMap()->register("alerts", new Alerts());
-        $this->getServer()->getCommandMap()->register("info", new Info());
-        $this->getServer()->getCommandMap()->register("nebula", new \bitpvp\command\Nebula());
+        if (($command = $this->getServer()->getCommandMap()->getCommand("pardon")) !== null) {
+            $this->getServer()->getCommandMap()->unregister($command);
+        }
+
+        $this->getServer()->getCommandMap()->register("nebula", new Alerts());
+        $this->getServer()->getCommandMap()->register("nebula", new Info());
+        $this->getServer()->getCommandMap()->register("nebula", new Pardon());
 
         $this->saveDefaultConfig();
 
