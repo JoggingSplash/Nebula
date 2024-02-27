@@ -45,7 +45,7 @@ class Reach extends IModule implements Listener {
             return;
         }
 
-        if ($player instanceof Human) {
+        if($player instanceof Human or $damager instanceof Human) {
             return;
         }
 
