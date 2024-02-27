@@ -42,7 +42,7 @@ class Fly extends IModule implements Listener {
             return;
         }
 
-        if ($player->isCreative() or $player->isSpectator() or !$player->getAllowFlight()) {
+        if ($player->isCreative() or $player->isSpectator() or $player->getAllowFlight()) {
             return;
         }
 
@@ -70,6 +70,10 @@ class Fly extends IModule implements Listener {
      */
     public function gettingDamage(EntityDamageEvent $event) : void {
         $player = $event->getEntity();
+
+        if(!$player instanceof Player){
+            return;
+        }
 
         $sessionPlayer = SessionManager::getInstance()->getSession($player);
 
