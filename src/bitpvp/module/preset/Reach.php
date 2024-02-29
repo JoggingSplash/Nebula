@@ -60,10 +60,10 @@ class Reach extends IModule implements Listener {
         }
         $damagerPing = $damager->getNetworkSession()->getPing();
         $playerPing = $player->getNetworkSession()->getPing();
-
         $distance = $player->getEyePos()->distance(new Vector3($damager->getEyePos()->getX(), $player->getEyePos()->getY(), $damager->getEyePos()->getZ()));
+
         $distance -= $damagerPing * 0.0043;
-        $distance -= $playerPing * 0.00532;
+        $distance -= $playerPing * 0.0052;
 
         if ($distance < 1) {
             return;

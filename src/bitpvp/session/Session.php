@@ -28,7 +28,6 @@ class Session
     public bool $enableAlerts = false;
     public bool $waitTime = true;
     public bool $isGettingDamage = false;
-
     public function __construct(
         public Player $player
     ) {}
