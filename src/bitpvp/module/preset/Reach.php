@@ -15,14 +15,12 @@ use pocketmine\event\entity\EntityDamageEvent;
 use pocketmine\event\Listener;
 use pocketmine\math\Vector3;
 use pocketmine\player\Player;
-use pocketmine\entity\Human;
 
 class Reach extends IModule implements Listener {
 
     public function __construct() {
         parent::__construct(self::REACH);
     }
-
 
     /**
      * @throws Exception
@@ -41,11 +39,11 @@ class Reach extends IModule implements Listener {
 
         $damager = $event->getDamager();
 
-        if (!$player instanceof Player && !$damager instanceof Player) {
+        if (!$player instanceof Player or !$damager instanceof Player) {
             return;
         }
 
-        if($player instanceof Human or $damager instanceof Human) {
+        if(!$damager->isSurvival()) {
             return;
         }
 
@@ -55,9 +53,7 @@ class Reach extends IModule implements Listener {
             return;
         }
 
-        if($damager->isCreative()){
-            return;
-        }
+
         $damagerPing = $damager->getNetworkSession()->getPing();
         $playerPing = $player->getNetworkSession()->getPing();
         $distance = $player->getEyePos()->distance(new Vector3($damager->getEyePos()->getX(), $player->getEyePos()->getY(), $damager->getEyePos()->getZ()));
