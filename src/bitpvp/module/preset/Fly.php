@@ -81,10 +81,13 @@ class Fly extends IModule implements Listener {
             return;
         }
 
-        if($event->getCause() === EntityDamageEvent::CAUSE_ENTITY_ATTACK) {
+        $c = $event->getCause();
+
+        if($c === EntityDamageEvent::CAUSE_ENTITY_ATTACK or $c === EntityDamageEvent::CAUSE_PROJECTILE) {
             $sessionPlayer->isGettingDamage = true;
             return;
         }
+
         $sessionPlayer->isGettingDamage = false;
     }
 

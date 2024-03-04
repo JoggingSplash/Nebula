@@ -20,7 +20,7 @@ class Proxy extends IModule implements Listener {
      * @priority NORMAL
      * @ignoreCancelled TRUE
      */
-    public function proxy(PlayerJoinEvent $event) {
+    public function windows(PlayerJoinEvent $event) { // default device spoofer == android
         $player = $event->getPlayer();
 
         if ($player instanceof Player) {
@@ -32,20 +32,16 @@ class Proxy extends IModule implements Listener {
                 return;
             }
 
-            /**
-             * Example how works
-             * Minecraft default: WINDOWS
-             * Lunar proxy client: Windows
-             */
-
             $name = explode(" ", $deviceModel);
+
             if (!isset($name[0]))  {
                 return;
             }
+
             $check = $name[0];
             $check = strtoupper($check);
             if ($check !== $name[0]) {
-                ModuleUtil::getInstance()->ban($player, Translator::translateModule($this->getFlagId())); //Win10 proxy
+                ModuleUtil::getInstance()->ban($player, Translator::translateModule($this->getFlagId()));
                 Util::getInstance()->log($this->getFlagId(), $player, 1 , 0);
             }
         }
