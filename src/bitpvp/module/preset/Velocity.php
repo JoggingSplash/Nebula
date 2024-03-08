@@ -75,7 +75,7 @@ class Velocity extends IModule implements Listener {
                 }
                 if($motion > 0.005) {
                     $percentage = ($movementY / $motion);
-                    if ($percentage > 0.999) {
+                    if ($percentage < 0.999) {
 
                         $session->velocityWait = time();
                         $session->addVelocityViolation();
