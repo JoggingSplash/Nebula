@@ -56,10 +56,6 @@ class Timer extends IModule implements Listener {
 
         $diff = $timestamp - $session->timerLastTimestamp;
 
-        if($diff === 0) { // login issue
-           return;
-        }
-
         $session->timerBalance += 0.05;
         $session->timerBalance -= $diff;
 

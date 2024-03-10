@@ -26,11 +26,16 @@ class ModuleUtil {
     }
 
     public function ban(Player $player, string $reason): void {
-        $session = SessionManager::getInstance()->getSession($player);
-        $session->banned = "$reason";
-        Registry::getInstance()->save($player->getName(), $session->banned, "Never");
+
         Nebula::getInstance()->getServer()->getPlayerByPrefix($player->getName())->kick(TextFormat::colorize("\n" . "&cNebula found you using ". $reason));
-        Nebula::getInstance()->getServer()->broadcastMessage(TextFormat::colorize("&l&5[Nebula] &r&5{$player->getName()} was found cheating using &c$reason &5and was removed permanently from the Server" . "\n"));
-        Util::getInstance()->logger($player, $reason);
+
+        if(Util::getInstance()->getConfig("ban")) {
+            Registry::getInstance()->save($player->getName(), $reason, "Never");
+            Nebula::getInstance()->getServer()->broadcastMessage(TextFormat::colorize("&l&5[Nebula] &r&5{$player->getName()} was found cheating using &c$reason &5and was removed permanently from the Server" . "\n"));
+            Util::getInstance()->logger($player, $reason);
+            return;
+        }
+        Nebula::getInstance()->getServer()->broadcastMessage(TextFormat::colorize("&l&5[Nebula] &r&5{$player->getName()} was found cheating using &c$reason &5and was removed from the Server" . "\n"));
+
     }
 }

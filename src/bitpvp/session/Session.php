@@ -15,7 +15,6 @@ class Session
     public Vector3|float|null $lastLocation = null;
     public float $timerLastTimestamp = -1.0;
     public float $timerBalance = 0.0;
-    public string $banned = "";
     public int $timerWait = -1;
     public int $velocityWait = -1;
     public int $reachViolations = 0;

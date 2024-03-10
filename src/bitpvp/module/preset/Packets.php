@@ -11,6 +11,7 @@ use pocketmine\network\mcpe\protocol\MovePlayerPacket;
 use pocketmine\network\mcpe\protocol\PlayerAuthInputPacket;
 use pocketmine\player\Player;
 use pocketmine\event\server\DataPacketReceiveEvent;
+
 class Packets extends IModule implements Listener {
 
     public function __construct(){

@@ -1,4 +1,10 @@
 ---
+# logs
+
 webhook-alerts: ''
 webhook-ban: ''
+
+# ban system
+
+ban: true
 ...
