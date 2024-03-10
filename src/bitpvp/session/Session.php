@@ -63,19 +63,21 @@ class Session
         $this->packetsViolations++;
     }
 
-	public function setEnableAlerts(bool $enableAlerts = true): void {
-		$this->enableAlerts = $enableAlerts;
-	}
+    public function setEnableAlerts(bool $enableAlerts = true): void {
+        $this->enableAlerts = $enableAlerts;
+    }
 
-	public function setWaitTime(bool $waitTime): void {
-		$this->waitTime = $waitTime;
-	}
+    public function setWaitTime(bool $waitTime): void {
+        $this->waitTime = $waitTime;
+    }
 
-	public function isEnableAlerts(): bool {
-		return $this->enableAlerts;
-	}
+    public function isEnableAlerts(): bool {
+        return $this->enableAlerts;
+    }
 
-	public function isWaitTime(): bool {
-		return $this->waitTime;
-	}
+    public function isWaitTime(): bool {
+        return $this->waitTime;
+    }
+    
+
 }
