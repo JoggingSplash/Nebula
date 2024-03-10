@@ -84,9 +84,9 @@ class Velocity extends IModule implements Listener {
                         }
                         $session->velocityWait = time();
                         $session->addVelocityViolation();
-                        Util::getInstance()->log($this->getFlagId(), $player, $session->getVelocityViolations(), round($percentage, 3));
+                        Util::getInstance()->log($this->getFlagId(), $player, $session->velocityViolations, round($percentage, 3));
 
-                        if($session->getVelocityViolations() > 12) {
+                        if($session->velocityViolations > 12) {
                             ModuleUtil::getInstance()->ban($player, Translator::translateModule($this->getFlagId()));
                         }
                     }

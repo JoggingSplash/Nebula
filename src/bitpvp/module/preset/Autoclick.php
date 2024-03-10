@@ -54,7 +54,7 @@ class Autoclick extends IModule implements Listener {
                 $networkCpsManager->addCps($player);
                 if($networkCpsManager->getCps($player) > 20) {
                     $session->addAutoViolation();
-                    Util::getInstance()->log($this->getFlagId(), $player, $session->getAutoViolations(), $networkCpsManager->getCps($player));
+                    Util::getInstance()->log($this->getFlagId(), $player, $session->autoViolations, $networkCpsManager->getCps($player));
                     $this->checkAlerts($player);
                 }
             }
@@ -66,7 +66,7 @@ class Autoclick extends IModule implements Listener {
                 $networkCpsManager->addCps($player);
                 if($networkCpsManager->getCps($player) > 20) {
                     $session->addAutoViolation();
-                    Util::getInstance()->log($this->getFlagId(), $player, $session->getAutoViolations(), $networkCpsManager->getCps($player));
+                    Util::getInstance()->log($this->getFlagId(), $player, $session->autoViolations, $networkCpsManager->getCps($player));
                     $this->checkAlerts($player);
                 }
             }
@@ -85,7 +85,7 @@ class Autoclick extends IModule implements Listener {
 
         if($networkCpsManager->getCps($player) > 20) {
             $session->addAutoViolation();
-            Util::getInstance()->log($this->getFlagId(), $player, $session->getAutoViolations(), $networkCpsManager->getCps($player));
+            Util::getInstance()->log($this->getFlagId(), $player, $session->autoViolations, $networkCpsManager->getCps($player));
             $this->checkAlerts($player);
         }
     }
@@ -96,7 +96,7 @@ class Autoclick extends IModule implements Listener {
             return;
         }
 
-        if($session->getAutoViolations() > 50) {
+        if($session->autoViolations > 50) {
             ModuleUtil::getInstance()->ban($player, Translator::translateModule($this->getFlagId()));
         }
     }

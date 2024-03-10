@@ -27,6 +27,7 @@ class Session
     public bool $enableAlerts = false;
     public bool $waitTime = true;
     public bool $isGettingDamage = false;
+
     public function __construct(
         public Player $player
     ) {}
@@ -37,7 +38,6 @@ class Session
     public function onJoin(): void {
         Nebula::getInstance()->getScheduler()->scheduleRepeatingTask(new ViolationDetect($this, $this->player), 20 * 60);
     }
-
 
     public function addReachViolation(): void {
         $this->reachViolations++;
@@ -59,7 +59,7 @@ class Session
         $this->autoViolations++;
     }
 
-    public function addPacketsViolations(): void {
+    public function addPacketsViolation(): void {
         $this->packetsViolations++;
     }
 
@@ -70,30 +70,6 @@ class Session
 	public function setWaitTime(bool $waitTime): void {
 		$this->waitTime = $waitTime;
 	}
-
-    public function getFlyViolations(): int {
-        return $this->flyViolations;
-    }
-
-    public function getReachViolations(): int {
-        return $this->reachViolations;
-    }
-
-    public function getTimerViolations(): int {
-        return $this->timerViolations;
-    }
-
-    public function getVelocityViolations(): int {
-        return $this->velocityViolations;
-    }
-
-    public function getAutoViolations (): int {
-        return $this->autoViolations;
-    }
-
-    public function getPacketsViolations(): int {
-        return $this->packetsViolations;
-    }
 
 	public function isEnableAlerts(): bool {
 		return $this->enableAlerts;

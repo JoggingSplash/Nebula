@@ -68,9 +68,9 @@ class Timer extends IModule implements Listener {
 
             $session->timerWait = time();
             $session->addTimerViolation();
-            Util::getInstance()->log($this->getFlagId(), $player, $session->getTimerViolations(), round($diff, 3));
+            Util::getInstance()->log($this->getFlagId(), $player, $session->timerViolations, round($diff, 3));
 
-            if($session->getTimerViolations() > 14) {
+            if($session->timerViolations > 14) {
                 ModuleUtil::getInstance()->ban($player, Translator::translateModule($this->getFlagId()));
             }
         }

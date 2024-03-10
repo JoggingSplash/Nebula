@@ -92,11 +92,11 @@ class Alerts extends Command
                 "&l&5[Nebula] &r&cAlerts will be reset each relog of the player",
 				"&r&5---------------------------------",
 				"&c{$target->getName()}'s Alerts:",
-				'&r&cReach: &5x' . $session->getReachViolations(),
-				'&r&cTimer: &5x' . $session->getTimerViolations(),
-				'&r&cVelocity: &5x' . $session->getVelocityViolations(),
-                '&r&cAutoClick: &5x'. $session->getAutoViolations(),
-                '&r&cPackets: &5x' . $session->getPacketsViolations(),
+				'&r&cReach: &5x' . $session->reachViolations,
+				'&r&cTimer: &5x' . $session->timerViolations,
+				'&r&cVelocity: &5x' . $session->velocityViolations,
+                '&r&cAutoClick: &5x'. $session->autoViolations,
+                '&r&cPackets: &5x' . $session->packetsViolations,
 				"&5---------------------------------"
 			];
 

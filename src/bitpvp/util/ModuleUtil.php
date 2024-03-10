@@ -19,7 +19,7 @@ class ModuleUtil {
             IModule::VELOCITY => TextFormat::colorize("&7[&4!&7] &5[Nebula] &7$player violated &4Velocity &7[amount: $details] [ping: $ping] [Device: $deviceOS] [x$violations]"),
             IModule::FLY => TextFormat::colorize("&7[&4!&7] &5[Nebula] &7$player violated &4Fly &7[ping: $ping] [Device: $deviceOS] [x$violations]"),
             IModule::AUTOCLICK => TextFormat::colorize("&7[&4!&7] &5[Nebula] &7$player violated &4AutoClick &7[cps: $details] [ping: $ping] [Device: $deviceOS] [x$violations]"),
-            IModule::PACKETS => TextFormat::colorize("&7[&4!&7] &5[Nebula] &7$player violated &4Packets &7[delay: $details] [ping: $ping] [Device: $deviceOS] [x$violations]"),
+            IModule::PACKETS => TextFormat::colorize("&7[&4!&7] &5[Nebula] &7$player violated &4Packets &7[ping: $ping] [Device: $deviceOS] [x$violations]"),
             IModule::PROXY => TextFormat::colorize("&7[&4!&7] &5[Nebula] &7$player tried to join using &4Proxy &7[ping: $ping] [Device: $deviceOS]"),
             default => null
         };

@@ -85,8 +85,8 @@ class Reach extends IModule implements Listener {
         if ($distance > 3) {
             $detail = round($distance, 3);
             $session->addReachViolation();
-            Util::getInstance()->log($this->getFlagId(), $damager, $session->getReachViolations(), $detail);
-            if($session->getReachViolations() > 25) {
+            Util::getInstance()->log($this->getFlagId(), $damager, $session->reachViolations, $detail);
+            if($session->reachViolations > 25) {
                 ModuleUtil::getInstance()->ban($damager, Translator::translateModule($this->getFlagId()));
             }
         }

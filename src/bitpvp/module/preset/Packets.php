@@ -39,8 +39,8 @@ class Packets extends IModule implements Listener {
             $session->packetsDelay++;
         }elseif($packet instanceof MovePlayerPacket){
             if($session->packetsDelay < 2 && !$player->hasNoClientPredictions() && $player->isAlive()){
-                $session->addPacketsViolations();
-                Util::getInstance()->log($this->getFlagId(), $player, $session->getPacketsViolations(), $session->packetsDelay);
+                $session->addPacketsViolation();
+                Util::getInstance()->log($this->getFlagId(), $player, $session->packetsViolations, 1);
             }
             $session->packetsDelay = 0;
         }
