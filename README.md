@@ -17,11 +17,13 @@ API 5.0.0
 Ban must be permanent, if someone who was banned by nebula try to join, it will be "banned" using SQL database.
 You can edit ban or kick at config.yml (Default True)
 
-## Commands
-/alerts [on / off / show] (Allow to enable/disable/show alerts)
-/info (Allow to see Player data)
-/pardon (Allow to unban a player)
+## Commands:
+
+- /alerts [on / off / show] (Allow to enable/disable/show alerts)
+- /info (Allow to see Player data)
+- /pardon (Allow to unban a player)
 
 ## Developers:
+
 - [Victualler](https://github.com/heyyvic)
 - [JoggingSplash23](https://github.com/JoggingSplash23)
