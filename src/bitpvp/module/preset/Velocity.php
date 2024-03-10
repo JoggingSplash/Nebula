@@ -6,7 +6,6 @@ namespace bitpvp\module\preset;
 
 
 use bitpvp\module\IModule;
-use bitpvp\Nebula;
 use bitpvp\network\NetworkStackLatencyManager;
 use bitpvp\session\Session;
 use bitpvp\session\SessionManager;
@@ -29,6 +28,7 @@ use pocketmine\network\mcpe\protocol\types\PlayerAction;
 use pocketmine\network\mcpe\protocol\types\PlayerAuthInputFlags;
 use pocketmine\network\mcpe\protocol\types\PlayerBlockActionWithBlockInfo;
 use pocketmine\player\Player;
+use Exception;
 
 class Velocity extends IModule implements Listener {
 
@@ -40,8 +40,13 @@ class Velocity extends IModule implements Listener {
         $player = $event->getOrigin()->getPlayer();
         $packet = $event->getPacket();
 
-        if ($packet instanceof PlayerAuthInputPacket) {
-            if(!$player->spawned or !$player->isOnline() or !$player->isAlive()){
+        if ($packet instanceof PlayerAuthInputPacket and $player instanceof Player and $player->isConnected()) {
+            if(!$player->spawned or !$player->isSurvival()){
+                return;
+            }
+            $session = SessionManager::getInstance()->getSession($player);
+
+            if(!$session instanceof Session){
                 return;
             }
 
@@ -49,9 +54,7 @@ class Velocity extends IModule implements Listener {
                 return;
             }
 
-            $session = SessionManager::getInstance()->getSession($player);
-
-            if(!$session instanceof Session){
+            if(!is_int($player->getNetworkSession()->getPing())) {
                 return;
             }
 
@@ -61,7 +64,7 @@ class Velocity extends IModule implements Listener {
                 return;
             }
 
-            if ($session->lastLocation === null) {
+            if (is_null($session->lastLocation)) {
                 $session->lastLocation = $packet->getPosition()->subtract(0, 1.62, 0);
                 $session->vMotion = null;
                 return;
@@ -75,13 +78,15 @@ class Velocity extends IModule implements Listener {
                 }
                 if($motion > 0.005) {
                     $percentage = ($movementY / $motion);
-                    if ($percentage > 0.999) {
-
+                    if ($percentage < 0.9999 and $percentage > 0.01) {
+                        if (time() - $session->velocityWait < 1) {
+                            return;
+                        }
                         $session->velocityWait = time();
                         $session->addVelocityViolation();
                         Util::getInstance()->log($this->getFlagId(), $player, $session->getVelocityViolations(), round($percentage, 3));
 
-                        if($session->getVelocityViolations() > 8) {
+                        if($session->getVelocityViolations() > 12) {
                             ModuleUtil::getInstance()->ban($player, Translator::translateModule($this->getFlagId()));
                         }
                     }
@@ -96,32 +101,10 @@ class Velocity extends IModule implements Listener {
             NetworkStackLatencyManager::getInstance()->execute($player, $packet->timestamp);
         }
     }
-
-    public function handleSendPacket(DataPacketSendEvent $event): void{
-        foreach ($event->getTargets() as $targets) {
-            if (!$targets instanceof Player or !$targets->isConnected()){
-                return;
-            }
-            $session = SessionManager::getInstance()->getSession($targets);
-
-            if(!$session instanceof Session){
-                return;
-            }
-
-            foreach ($event->getPackets() as $packet) {
-                $packet = PacketPool::getInstance()->getPacket($packet->getName());
-                if ($packet instanceof SetActorMotionPacket) {
-                    if ($packet->actorRuntimeId === $targets->getId()) {
-                        $motion = $packet->motion->getY();
-                        NetworkStackLatencyManager::getInstance()->send($targets, function () use ($session, $targets, $motion): void {
-                            $session->vMotion = $motion;
-                        });
-                    }
-                }
-            }
-        }
-    }
-
+    /**
+     * @throws Exception
+     * @priority HIGHEST
+     */
     public function handleReceivePacket(DataPacketReceiveEvent $event): void {
         $origin = $event->getOrigin();
         $player = $origin->getPlayer();
@@ -131,7 +114,6 @@ class Velocity extends IModule implements Listener {
                 $pkPos = $packet->getPosition();
                 foreach ([$pkPos->x, $pkPos->y, $pkPos->z, $packet->getYaw(), $packet->getHeadYaw(), $packet->getPitch()] as $float) {
                     if (is_infinite($float) || is_nan($float)) {
-                        Nebula::getInstance()->getLogger()->debug('Invalid movement received, contains NAN/INF components');
                         return;
                     }
                 }
@@ -182,4 +164,36 @@ class Velocity extends IModule implements Listener {
             }
         }
     }
+
+    /**
+     * @throws Exception
+     * @priority HIGHEST
+     */
+
+    public function handleSendPacket(DataPacketSendEvent $event): void{
+        foreach ($event->getTargets() as $targets) {
+            if (!$targets instanceof Player or !$targets->isConnected()){
+                return;
+            }
+            $session = SessionManager::getInstance()->getSession($targets);
+
+            if(!$session instanceof Session){
+                return;
+            }
+
+            foreach ($event->getPackets() as $packet) {
+                $packet = PacketPool::getInstance()->getPacket($packet->getName());
+                if ($packet instanceof SetActorMotionPacket) {
+                    if ($packet->actorRuntimeId === $targets->getId()) {
+                        $motion = $packet->motion->getY();
+                        NetworkStackLatencyManager::getInstance()->send($targets, function () use ($session, $targets, $motion): void {
+                            $session->vMotion = $motion;
+                        });
+                    }
+                }
+            }
+        }
+    }
+
+
 }
