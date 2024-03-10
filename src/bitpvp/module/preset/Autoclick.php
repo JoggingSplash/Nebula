@@ -30,9 +30,9 @@ class Autoclick extends IModule implements Listener {
      * @throws Exception
      */
 
-    public function cps(DataPacketReceiveEvent $ev): void {
-        $player = $ev->getOrigin()->getPlayer();
-        $packet = $ev->getPacket();
+    public function cps(DataPacketReceiveEvent $event): void {
+        $player = $event->getOrigin()->getPlayer();
+        $packet = $event->getPacket();
 
         if (!$player instanceof Player) {
             return;
@@ -43,6 +43,10 @@ class Autoclick extends IModule implements Listener {
         }
 
         $session = SessionManager::getInstance()->getSession($player);
+
+        if(!$session instanceof Session) {
+            return;
+        }
 
         if ($packet instanceof LevelSoundEventPacket) {
             if ($packet->sound === LevelSoundEvent::ATTACK_NODAMAGE) {
